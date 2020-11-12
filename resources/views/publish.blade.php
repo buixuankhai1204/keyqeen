@@ -3,7 +3,7 @@
         @csrf
         <!-- <input type="text" name="body" placeholder="what do you think?" class="w-full py-5 mb-4 text-black" required>
         </input> -->
-        <input type="text" name="body" placeholder="what do you think?" id="" class="w-full py-3 mb-4 text-black" required>
+        <input type="text" name="body" placeholder="what do you think?" id="" class="rounded w-full p-3 mb-4 text-black" required>
         <hr>
         <div class="flex justify-between py-2">
             <div class="flex text-small mb-2">

@@ -22,21 +22,30 @@
 
 <body>
     <style>
+        .border{
+        border-color:black!important;
+    }
+    *{
+        border-color:black;
+    }
         h1 img {
             width: 80px;
             height: 80px;
         }
+        input{
+            background-color: black;
+        }
     </style>
-    <div id="app">
+    <div id="app" style="background-color: black;">
         <section class="px-8 py-4 mb-4">
             <header class="container mx-auto">
                 <h1>
-                    <img src="{{url('public/images/logo.jpeg')}}" alt="">
+                    <img src="{{url('public/images/logo.jpeg')}}" style="background-color: black" alt="">
                 </h1>
             </header>
         </section>
         <section class="px-8">
-            <main class="container mx-auto">
+            <main class="container mx-auto rounded pt-6 mt-4"  style="background-color: #EEC900">
 
                 @yield('content')
             </main>

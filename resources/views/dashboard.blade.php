@@ -14,7 +14,7 @@
     <div class="flex-1 lg:mx-10" style="max-width:700px">
         @include('publish')
 
-        <div class="border border-grey-400 rounded-lg">
+        <div class="border border-black-400 rounded-lg">
             @foreach($keyqeen as $item)
             @include('_keyqeen')
             @endforeach

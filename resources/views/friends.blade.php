@@ -1,4 +1,4 @@
-<h1 class="font-weight-bold">FOLLOWS</h1>
+<h1 class="font-weight-bold mb-4">FOLLOWS</h1>
 <ul>
     @foreach(auth()->User()->follows as $User)
     <li>
