@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -57,17 +58,26 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function keyqeen(){
+        return $this->hasMany(keyqeen::class);
+    }
+    public function timeline(){
+        $friends=$this->follows->pluck('id');
+        return keyqeen::whereIn('user_id',$friends)->orwhere('user_id',$this->id)->latest()->get();
+    }
     public function getAvatarAttribute(){
         return "https://i.pravatar.cc/40?u=".$this->email;
     }
-    public function timeline(){
-        return Keyqeen::where('User_id',$this->id)->latest()->get();
-    }
+    
     public function follow (User $user){
         return $this->follows()->save($user);
     }
     public function follows(){
         return $this->belongsToMany(User::class,'follows','user_id','follow_user_id');
+    }
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 
    

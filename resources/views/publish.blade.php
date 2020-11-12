@@ -1,5 +1,5 @@
 <div class="border rounded-lg border-yellow-400 px-8 py-4 mb-8">
-    <form action="{{url('dashboard')}}" method="POST">
+    <form action="{{url('home')}}" method="POST">
         @csrf
         <!-- <input type="text" name="body" placeholder="what do you think?" class="w-full py-5 mb-4 text-black" required>
         </input> -->

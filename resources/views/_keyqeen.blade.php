@@ -6,10 +6,13 @@
 </style>
 <div class="flex p-4 border-b gray-400">
     <div class="mr-2 flex-shrink-0">
-        <img src={{ auth()->User()->getAvatarAttribute() }} alt="" class="rounded-full mr-2 img-keyqeen">
+        <a href="{{route('profile',$item->user->name)}}">
+        <img src={{ $item->User->getAvatarAttribute() }} alt="" class="rounded-full mr-2 img-keyqeen">
+
+        </a>
     </div>
     <div>
-        <h5 class="font-bold mb-4">{{$item->User->name}}</h5>
+        <h5 class="font-bold mb-4"><a  style="text-decoration:none" href="{{route('profile',$item->user->name)}}">{{$item->User->name}}</a></h5>
         <p class="text-sm">{{$item->body}}
         </p>
     </div>
