@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -63,12 +64,17 @@ class User extends Authenticatable
     }
     public function timeline(){
         $friends=$this->follows->pluck('id');
-        return keyqeen::whereIn('user_id',$friends)->orwhere('user_id',$this->id)->latest()->get();
+        return keyqeen::whereIn('user_id',$friends)->orwhere('user_id',$this->id)->WithLikes()->latest()->get();
     }
     public function getAvatarAttribute(){
         return "https://i.pravatar.cc/40?u=".$this->email;
     }
-    
-    
-   
+    public function path($appends=''){
+        $path=route('profile',$this->name);
+        return $appends ? "{$path}/{$appends}" : $path;
+    }
+    public function likes()
+    {
+        return  $this->hasMany(Like::class);
+    }
 }

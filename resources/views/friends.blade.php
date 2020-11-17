@@ -3,10 +3,10 @@
     @foreach(auth()->User()->follows as $User)
     <li>
         <div class="flex text-small mb-4">
-            <a href="{{route('profile',$User)}}">
-            <img class="rounded-full mr-2" src={{$User->getAvatarAttribute()}} alt="">
+            <a href="{{$User->path()}}">
+            <img class="rounded-full mr-4 w-13" src="{{url('public/images',$User->avatar_user)}}">
             </a>
-            <a href="{{route('profile',$User)}}" style="text-decoration:none" >
+            <a href="{{$User->path()}}" style="text-decoration:none" >
             <p>{{$User->name}}</p>
             </a>
         </div>

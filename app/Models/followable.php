@@ -7,7 +7,6 @@ trait followable
 {
     public function following(User $user)
     {
-        //
         return $this->follows()->where('follow_user_id', $user->id)->exists();
     }
     public function follow(User $user)

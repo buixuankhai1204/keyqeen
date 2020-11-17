@@ -7,7 +7,7 @@
         <hr>
         <div class="flex justify-between py-2">
             <div class="flex text-small mb-2">
-                <img class="rounded-full mr-2" src={{ auth()->User()->getAvatarAttribute() }} alt="">
+                <img class="rounded-full mr-2 w-10" src="{{url('public/images',auth()->user()->avatar_user)}}">
             </div>
             <button type="submit" class="bg-yellow-500 rounded-lg shadow text-white py-2 px-2">POST</button>
         </div>

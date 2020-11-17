@@ -22,10 +22,10 @@
         <header class="mb-6 relative">
             <div class="relative">
                 <div class="img">
-                    <img src={{ $user->getAvatarAttribute() }} alt="" style="height: 320px;" class="mb-2 w-100 rounded">
+                    <img src="{{url('public/images',$user->avatar_user)}}" alt="" style="height: 320px;" class="mb-2 w-100 rounded">
                 </div>
 
-                <img src={{ $user->getAvatarAttribute() }} alt="" class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2" style="left: 50%" width="150">
+                <img src="{{url('public/images',$user->avatar_user)}}" alt="" class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2" style="left: 50%" width="150">
             </div>
 
             <div class="flex justify-between items-center mb-6">
@@ -35,16 +35,21 @@
                 </div>
 
                 <div class="flex">
+                @if(auth()->user()->is($user))
                     {{-- @can ('edit', $user) --}}
-                    <a href="" class="btn btn-outline-dark rounded-full border border-gray-300 py-2 px-4 text-black text-xs mr-2">
-                        Edit Profile</a>
+                    <form method="POST" action="/keyqeen/profile/{{$user->name}}/edit">
+                        <a   href="{{$user->path('edit')}}" class="btn btn-outline-dark rounded-full border border-gray-300 py-2 px-4 text-black text-xs mr-2">
+                            Edit Profile</a>
+                    </form>
                     {{-- @endcan --}}
+                    @endif
+                    @if(auth()->user()->isNot($user))
                     <form method="POST" action="/keyqeen/profile/{{$user->name}}/follow">
                         @csrf
                         <button type="submit" href="" class="btn btn-outline-dark rounded-full border shadow py-2 px-4 text-black text-xs mr-2">
                             {{auth()->user()->following($user)?'Unfollow Me':'Follow Me'}}</button>
                     </form>
-
+                    @endif
                 </div>
             </div>
 
@@ -59,9 +64,10 @@
 
         </header>
         @include('_timeline',[
-        'keyqeen'=>$user->keyqeen,
+        'keyqeen'=>$user->timeline(),
         ])
     </div>
-    <div class="lg:w-1/6">@include('friends')</div>
+    <div class="lg:w-1/6 bg-black rounded-lg p-4 min-height ml-3 text-light">@include('friends')
+    </div>
 </div>
 @endsection

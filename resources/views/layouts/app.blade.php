@@ -26,7 +26,7 @@
         border-color:black!important;
     }
     *{
-        border-color:black;
+        border-color:black; 
     }
         h1 img {
             width: 80px;
@@ -36,7 +36,7 @@
             background-color: black;
         }
     </style>
-    <div id="app" style="background-color: black;">
+    <div id="app" style="background-color: black; min-height:722px">
         <section class="px-8 py-4 mb-4">
             <header class="container mx-auto">
                 <h1>
@@ -45,8 +45,7 @@
             </header>
         </section>
         <section class="px-8">
-            <main class="container mx-auto rounded pt-6 mt-4"  style="background-color: #EEC900">
-
+            <main class="container mx-auto rounded pt-6 mt-4"  style="background-color: yellow">
                 @yield('content')
             </main>
         </section>

@@ -24,4 +24,14 @@ class KeyqeenController extends Controller
         ]);
         return redirect('/home')->with('success','đăng bài thành công');
     }
+    public function login(){
+        
+        auth()->logout();
+        return view('auth.login');
+    }
+    public function register(){
+        
+        auth()->logout();
+        return view('auth.register');
+    }
 }
